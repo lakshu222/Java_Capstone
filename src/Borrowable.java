@@ -1,0 +1,7 @@
+/**
+ * Borrowable
+ */
+public interface Borrowable {
+    
+    
+}
