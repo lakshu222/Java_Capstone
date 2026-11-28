@@ -1,7 +1,0 @@
-/**
- * Borrowable
- */
-public interface Borrowable {
-    
-    
-}

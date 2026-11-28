@@ -1,5 +1,6 @@
+package MEMS;
 public class Student extends Member{
-    Student(String id,String name){
+    public Student(String id,String name){
         super(id,name);
     }
     public int getperiod(){

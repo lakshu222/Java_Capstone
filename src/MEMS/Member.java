@@ -1,7 +1,9 @@
-abstract public class Member extends Library {
+package MEMS;
+abstract public class Member{
     private String id;
     private String name;
-    Member(String id,String name){
+    public int itemsborrowed=0;
+    public Member(String id,String name){
         this.id=id;
         this.name=name;
     }
@@ -10,4 +12,7 @@ abstract public class Member extends Library {
     }
     abstract public int getperiod();
     abstract public int getmax();
+    public int getitemsborrowed(){
+        return itemsborrowed;
+    }
 }
