@@ -74,6 +74,7 @@ public class Library{
             fine=b.getfine(day-dd);
             }
         }
+        mems.get(loans.get(itemid).getmemId()).itemsborrowed--;
         loans.remove(itemid);
         if(it instanceof Borrowable b){
             b.retun();
@@ -93,7 +94,10 @@ public class Library{
                 q.remove(togive);
                 reservation.put(itemid,q);
                 Borrow(togive.getid(), itemid,true);
-                System.out.print("OK fine "+fine+", issued to"+togive.getid()+" due on day "+loans.get(itemid).getduedate());
+                System.out.println("OK fine "+fine+", issued to "+togive.getid()+" due on day "+loans.get(itemid).getduedate());
+            }
+            else{
+                System.out.println("OK fine "+fine);
             }
         }
 
@@ -202,6 +206,10 @@ public class Library{
         if(!items.containsKey(itemid)){
             throw new ItemNotFoundException(itemid);
         }
+        LibraryItem dt=items.get(itemid);
+        if(!(dt instanceof Borrowable)){
+            throw new ItemNotAvailableException(itemid+" cannot be borrowed");
+        }
         boolean k=false;
         String newmemId="";
         for(String it:loans.keySet()){
@@ -225,10 +233,12 @@ public class Library{
             }
             b.add(mems.get(memId));
             reservation.put(itemid,b);
+            System.out.println("OK reserved");
             return;
         }
         LinkedList<Member> v=new LinkedList<>();
         v.add(mems.get(memId));
         reservation.put(itemid,v);
+        System.out.println("OK reserved");
     }
 }

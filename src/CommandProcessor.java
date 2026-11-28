@@ -75,6 +75,8 @@ public class CommandProcessor{
                 case "INVENTORY":
                     current.inventory();
                     break;
+                case "RESERVE":
+                    current.reserve(p[1],p[2]);
             }
         }
         catch(LibraryException e){
